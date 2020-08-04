@@ -87,16 +87,6 @@ jQuery(function ($) {
                 "name": "Buông Đôi Tay Nhau Ra - Sơn Tùng M-TP",
                 "duration": "3:45",
                 "file": "Buong-Doi-Tay-Nhau-Ra-Son-Tung-M-TP"
-            }, {
-                "track": 14,
-                "name": "Buồn Làm Chi Em Ơi - Hoài Lâm",
-                "duration": "5:13",
-                "file": "Buon-Lam-Chi-Em-Oi-AcousticVersion1-HoaiLam"
-            }, {
-                "track": 15,
-                "name": "Buồn Thì Cứ Khóc Đi"
-                "duration": "3:42",
-                "file": "Buon-Thi-Cu-Khoc-Di-Lynk-Lee"
             }],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
