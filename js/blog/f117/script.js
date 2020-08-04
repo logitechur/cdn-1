@@ -79,49 +79,9 @@ jQuery(function ($) {
                 "file": "Believer-Imagine-Dragons"
             }, {
                 "track": 12,
-                "name": "Bigcityboi - Binz, Touliver ",
+                "name": "Bigcityboi - Binz, Touliver",
                 "duration": "3:21",
                 "file": "Bigcityboi-Binz-Touliver"
-            }, {
-                "track": 13,
-                "name": "Buông Đôi Tay Nhau Ra - Sơn Tùng M-TP",
-                "duration": "3:45",
-                "file": "Buong-Doi-Tay-Nhau-Ra-Son-Tung-M-TP"
-            }, {
-                "track": 14,
-                "name": "Buồn Làm Chi Em Ơi - Hoài Lâm",
-                "duration": "5:13",
-                "file": "Buon-Lam-Chi-Em-Oi-AcousticVersion1-HoaiLam"
-            }, {
-                "track": 15,
-                "name": "Buồn Thì Cứ Khóc Đi"
-                "duration": "3:42",
-                "file": "Buon-Thi-Cu-Khoc-Di-Lynk-Lee"
-            }, {
-                "track": 16,
-                "name": "Careless Whisper - George Michael",
-                "duration": "5:05",
-                "file": "Careless-Whisper-George-Michael"
-            }, {
-                "track": 17,
-                "name": "Chạm Khẽ Tim Anh Một Chút Thôi - Noo Phước Thịnh",
-                "duration": "5:46",
-                "file": "Cham-Khe-Tim-Anh-Mot-Chut-Thoi-Noo-Phuoc-Thinh"
-            }, {
-                "track": 18,
-                "name": "Chân Ái - Orange, Khói",
-                "duration": "4:22",
-                "file": "Chan-Ai-Orange-Khoi"
-            }, {
-                "track": 19,
-                "name": "Cho Anh Say",
-                "duration": "5:07",
-                "file": "Cho-Anh-Say-Phan-Duy-Anh-ACV"
-            }, {
-                "track": 20,
-                "name": "Cho Em Gần Anh Thêm Một Chút Nữa - Hương Tràm",
-                "duration": "5:14",
-                "file": "Cho-Em-Gan-Anh-Them-Chut-Nua-Huong-Tra"
             }],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
