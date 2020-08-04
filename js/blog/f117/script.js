@@ -92,7 +92,7 @@ jQuery(function ($) {
                 "name": "Buồn Làm Chi Em Ơi - Hoài Lâm",
                 "duration": "5:13",
                 "file": "Buon-Lam-Chi-Em-Oi-AcousticVersion1-HoaiLam"
-            }, {
+            /*}, {
                 "track": 15,
                 "name": "Buồn Thì Cứ Khóc Đi"
                 "duration": "3:42",
@@ -446,7 +446,7 @@ jQuery(function ($) {
                 "track": 85,
                 "name": "Yêu Từ Đâu Mà Ra - Lil Zpoet",
                 "duration": "4:02",
-                "file": "Yeu-Tu-Da-Ma-Ra-Lil-Zpoet"
+                "file": "Yeu-Tu-Da-Ma-Ra-Lil-Zpoet" */
             }],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
