@@ -67,6 +67,111 @@ jQuery(function ($) {
                 "name": "Bài Này Chill Phết - Đen",
                 "duration": "4:36",
                 "file": "Bai-Nay-Chill-Phet-Den-Min"
+            }, {
+                "track": 10,
+                "name": "Bánh Mì Không - Đạt G, DuUyen",
+                "duration": "4:05",
+                "file": "Banh-Mi-Khong-Dat-G-Du-Uyen"
+            }, {
+                "track": 11,
+                "name": "Believer - Imagine Dragons",
+                "duration": "3:23",
+                "file": "Believer-Imagine-Dragons"
+            }, {
+                "track": 12,
+                "name": "Bigcityboi - Binz, Touliver ",
+                "duration": "3:21",
+                "file": "Bigcityboi-Binz-Touliver"
+            }, {
+                "track": 13,
+                "name": "Buông Đôi Tay Nhau Ra - Sơn Tùng M-TP",
+                "duration": "3:45",
+                "file": "Buong-Doi-Tay-Nhau-Ra-Son-Tung-M-TP"
+            }, {
+                "track": 14,
+                "name": "Buồn Làm Chi Em Ơi - Hoài Lâm",
+                "duration": "5:13",
+                "file": "Buon-Lam-Chi-Em-Oi-AcousticVersion1-HoaiLam"
+            }, {
+                "track": 15,
+                "name": "Buồn Thì Cứ Khóc Đi"
+                "duration": "3:42",
+                "file": "Buon-Thi-Cu-Khoc-Di-Lynk-Lee"
+            }, {
+                "track": 16,
+                "name": "Careless Whisper - George Michael",
+                "duration": "5:05",
+                "file": "Careless-Whisper-George-Michael"
+            }, {
+                "track": 17,
+                "name": "Chạm Khẽ Tim Anh Một Chút Thôi - Noo Phước Thịnh",
+                "duration": "5:46",
+                "file": "Cham-Khe-Tim-Anh-Mot-Chut-Thoi-Noo-Phuoc-Thinh"
+            }, {
+                "track": 18,
+                "name": "Chân Ái - Orange, Khói",
+                "duration": "4:22",
+                "file": "Chan-Ai-Orange-Khoi"
+            }, {
+                "track": 19,
+                "name": "Cho Anh Say",
+                "duration": "5:07",
+                "file": "Cho-Anh-Say-Phan-Duy-Anh-ACV"
+            }, {
+                "track": 20,
+                "name": "Cho Em Gần Anh Thêm Một Chút Nữa - Hương Tràm",
+                "duration": "5:14",
+                "file": "Cho-Em-Gan-Anh-Them-Chut-Nua-Huong-Tra"
+            }, {
+                "track": 21,
+                "name": "Chúng Ta Không Thuộc Về Nhau - Sơn Tùng M-TP",
+                "duration": "3:53",
+                "file": "Chung-Ta-Khong-Thuoc-Ve-Nhau-Son-Tung"
+            }, {
+                "track": 22,
+                "name": "Có Ai Thương Em Như Anh - Tóc Tiên",
+                "duration": "3:51",
+                "file": "Co-Ai-Thuong-Em-Nhu-Anh-Catena-Toc-Tien"
+            }, {
+                "track": 23,
+                "name": "Có Chắc Yêu Là Đây - Sơn Tùng M-TP",
+                "duration": "3:22",
+                "file": "Co-Chac-Yeu-La-Day-M-TP"
+            }, {
+                "track": 24,
+                "name": "Có Chàng Trai Viết Lên Cây - Phan Mạnh Quỳnh",
+                "duration": "5:09",
+                "file": "Co-Chang-Trai-Viet-Len-Cay-Phan-Manh-Quynh"
+            }, {
+                "track": 25,
+                "name": "Cơn Mưa Ngang Qua - Sơn Tùng M-TP",
+                "duration": "3:53",
+                "file": "Con-Mua-Ngang-Qua-Son-Tung-M-TP"
+            }, {
+                "track": 26,
+                "name": "Cô Thắm Không Về - Phát Hồ, Jokes Bii, Thiện",
+                "duration": "4:05",
+                "file": "Co-Tham-Khong-Ve-Phat-Ho-Jokes-Bii-T"
+            }, {
+                "track": 27,
+                "name": "Cưới Nhau Đi - Bùi Anh Tuấn, Hiền Hồ",
+                "duration": "4:21",
+                "file": "Cuoi-Nhau-Di-Yes-I-Do-Bui-Anh-Tuan"
+            }, {
+                "track": 28,
+                "name": "Cứ Thế Rời Xa - Yến Tatto, Great",
+                "duration": "3:53",
+                "file": "Cu-The-Roi-Xa-Yen-Tatoo-Great"
+            }, {
+                "track": 29,
+                "name": "Demons - Imagine Dragons",
+                "duration": "2:57",
+                "file": "Demons-Imagine-Dragons"
+            }, {
+                "track": 30,
+                "name": "Đợi Người - Hori Slart",
+                "duration": "3:08",
+                "file": "Doi-Nguoi-Hori-Slart"
             }],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
