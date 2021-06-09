@@ -1,108 +1,31 @@
-(function(w, u) {
-    var d = w.document,
-        z = typeof u;
+! function() {
+    function f() {
+        var a = document.createElement("div");
+        a.id = "levelmaxblock";
+        a.innerHTML = '<div class="inner"> <div class="header"> <h2>Đã phát hiện Ad Blocker</h2> </div> <div class="isi"> <p>Xin vui lòng hỗ trợ chúng tôi bằng cách tắt trình chặn quảng cáo của bạn!</p> <div class="tombol"><button class="1 active">Adblock</button><button class="2">Adblock Plus</button></div> <div class="caranya"> <div class="1 active"> <ol> <li>Click on the AdBlock icon in your browser.<br>Nhấp vào biểu tượng AdBlock trong trình duyệt của bạn.<br><img src=" https://1.bp.blogspot.com/-arF80cUN1dY/YLzuC3slp9I/AAAAAAAAYzc/hEqegue0VUMevu8o_SfqHPz7BuNuaQWqQCLcBGAsYHQ/s64/block-1.png" alt="Adblock"></li> <li>Choose, Don\'t run on pages on this domain.<br>Chọn, Không chạy trên các trang trên miền này.<br><img src=" https://1.bp.blogspot.com/-n8zrLbnsMCE/YLzuC5xrKLI/AAAAAAAAYzk/Z09gE9N_ds8W-wioY-EEMecPF2prf21DACLcBGAsYHQ/s295/block-2.jpg" alt="Adblock" width="300px"></li> <li>The browser icon should have turned grey.<br>Biểu tượng trình duyệt phải chuyển sang màu xám.<br><img src=" https://1.bp.blogspot.com/-rT1Vi2bTeSk/YLzuC7lVGLI/AAAAAAAAYzg/IAI8K-1Y9GEZ958GP5_gLYA--dUcYz26wCLcBGAsYHQ/s64/block-3.png" alt="Adblock"></li> <li>Refresh the page if it didn\'t refresh automatically. Thanks!<br>Làm mới trang nếu nó không tự động làm mới. Cảm ơn!</li> </ol> </div> <div class="2"> <ol> <li>Click on the AdBlock Plus icon in your browser.<br>Nhấp vào biểu tượng AdBlock Plus trong trình duyệt của bạn.<br><img src=" https://1.bp.blogspot.com/-pf8oRbtDbwE/YLzuD9a698I/AAAAAAAAYzo/XHJBPNALKuk42jJUJxxwaih5qGjaL8spgCLcBGAsYHQ/s0/block-4.png" alt="Adblock"></li> <li>Click the "This Website" button.<br>Nhấp vào nút "Trang web này".<br><img src=" https://1.bp.blogspot.com/-w48ELralR7Y/YLzuEJpyGgI/AAAAAAAAYzw/91rIdKHglZo1qQob8c48Bm7X4LF0fWYsgCLcBGAsYHQ/s605/off-ads-plus.jpg" alt="Adblock" width="250px"></li> <li>Click "Refresh"<br>Nhấp vào "Làm mới"<br><img src=" https://1.bp.blogspot.com/-nlMOYeDENsY/YLzuEEzyKvI/AAAAAAAAYzs/bQEkz1Z_2G8rwTqxYidSK_WgxzTGxhRLgCLcBGAsYHQ/s516/off-ads-plus-1.jpg" alt="Adblock" width="250px"></li> </ol> </div> </div> </div> </div>';
 
-    function g207() {
-        function c(c, i) {
-            var e = d.createElement('i'),
-                b = d.body,
-                s = b.style,
-                l = b.childNodes.length;
-            if (typeof i != z) {
-                e.setAttribute('id', i);
-                s.margin = s.padding = 0;
-                s.height = '100%';
-                l = Math.floor(Math.random() * l) + 1
-            }
-            e.innerHTML = c;
-            b.insertBefore(e, b.childNodes[l - 1])
-        }
-
-        function g(i, t) {
-            return !t ? d.getElementById(i) : d.getElementsByTagName(t)
-        };
-
-        function f(v) {
-            if (!g('g207')) {
-                c('<p>Vui lòng tắt phần mềm chặn quảng cáo!<br/>Website đã phát hiện bạn đang sử dụng phần mềm chặn quảng cáo. <br/> Vui lòng tắt phần mềm để tiếp tục truy cập!</p>', 'g207')
-            }
-        };
-        (function() {
-            var a = ['Adrectangle', 'PageLeaderAd', 'ad-column', 'advertising2', 'divAdBox', 'mochila-column-right-ad-300x250-1', 'searchAdSenseBox', 'ad', 'ads', 'adsense'],
-                l = a.length,
-                i, s = '',
-                e;
-            for (i = 0; i < l; i++) {
-                if (!g(a[i])) {
-                    s += '<a id="' + a[i] + '"></a>'
-                }
-            }
-            c(s);
-            l = a.length;
-            for (i = 0; i < l; i++) {
-                e = g(a[i]);
-                if (e.offsetParent == null || (w.getComputedStyle ? d.defaultView.getComputedStyle(e, null).getPropertyValue('display') : e.currentStyle.display) == 'none') {
-                    return f('#' + a[i])
-                }
-            }
-        }());
-        (function() {
-            var t = g(0, 'img'),
-                a = ['/adaffiliate_', '/adops/ad', '/adsales/ad', '/adsby.', '/adtest.', '/ajax/ads/ad', '/controller/ads/ad', '/pageads/ad', '/weather/ads/ad', '-728x90-'],
-                i;
-            if (typeof t[0] != z && typeof t[0].src != z) {
-                i = new Image();
-                i.onload = function() {
-                    this.onload = z;
-                    this.onerror =
-                        function() {
-                            f(this.src)
-                        };
-                    this.src = t[0].src + '#' + a.join('')
-                };
-                i.src = t[0].src
-            }
-        }());
-        (function() {
-            var o = {
-                    'http://pagead2.googlesyndication.com/pagead/show_ads.js': 'google_ad_client',
-                    'http://js.adscale.de/getads.js': 'adscale_slot_id',
-                    'http://get.mirando.de/mirando.js': 'adPlaceId'
-                },
-                S = g(0, 'script'),
-                l = S.length - 1,
-                n, r, i, v, s;
-            d.write = null;
-            for (i = l; i >= 0; --i) {
-                s = S[i];
-                if (typeof o[s.src] != z) {
-                    n = d.createElement('script');
-                    n.type = 'text/javascript';
-                    n.src = s.src;
-                    v = o[s.src];
-                    w[v] = u;
-                    r = S[0];
-                    n.onload = n.onreadystatechange = function() {
-                        if (typeof w[v] == z && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
-                            n.onload = n.onreadystatechange = null;
-                            r.parentNode.removeChild(n);
-                            w[v] = null
-                        }
-                    };
-                    r.parentNode.insertBefore(n, r);
-                    setTimeout(function() {
-                        if (w[v] !== null) {
-                            f(n.src)
-                        }
-                    }, 2000);
-                    break
-                }
-            }
-        }())
+        document.body.append(a);
+        document.body.style.overflow = "hidden";
+        var b = a.querySelectorAll("button");
+        a.querySelector(".close");
+        var d = a.querySelectorAll(".caranya > div");
+        for (a = 0; a < b.length; a++) b[a].addEventListener("click", function(a) {
+            a.preventDefault();
+            a = this.getAttribute("class").split(" ")[0];
+            for (var c = 0; c < d.length; c++) d[c].classList.remove("active"), b[c].classList.remove("active");
+            b[a - 1].classList.add("active");
+            d[a - 1].classList.add("active")
+        })
     }
-    if (d.addEventListener) {
-        w.addEventListener('load', g207, false)
-    } else {
-        w.attachEvent('onload', g207)
-    }
-})(window);
+    var b = document.createElement("script");
+    b.type = "text/javascript";
+
+    b.async = !0;
+    b.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    b.onerror = function() {
+        f();
+        window.adblock = !0
+    };
+    var e = document.getElementsByTagName("script")[0];
+    e.parentNode.insertBefore(b, e)
+}();
