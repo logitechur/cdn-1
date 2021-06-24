@@ -1,50 +1,59 @@
-#blogFriends::-webkit-scrollbar {
+
+#codepro-blogFriends::-webkit-scrollbar {
     width: 5px
 }
 
-#blogFriends::-webkit-scrollbar-thumb {
+#codepro-blogFriends::-webkit-scrollbar-thumb {
     background: #484848;
     border-radius: 100px
 }
 
-#blogFriends::-webkit-scrollbar-thumb:active {
+#codepro-blogFriends::-webkit-scrollbar-thumb:active {
     background: #777
 }
 
-#blogFriends {
+#codepro-blogFriends {
     padding: 0;
     margin: 0;
     list-style: none;
-    max-height: 500px;
-    overflow: auto;
-    display: block
+    max-height: 1000px;
+    overflow: auto
 }
 
-.blogFriends {
+.codepro-blogFriends {
     margin: 0;
     padding: 0
 }
 
-.blogFriends li {
+.codepro-blogFriends li {
     margin: 0;
     padding: 0;
     line-height: normal;
     display: block;
     float: left;
-    text-align: left;
+    text-align: center;
     width: 50%
 }
 
-.blogFriends a {
+.codepro-blogFriends a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
     margin: 0 8px 8px 0;
+    padding: 7px 15px;
     font: 400 13px 'Noto Sans', sans-serif;
+    -webkit-transition: .3s;
+    letter-spacing: -.35px;
+    -moz-transition: .3s;
+    -o-transition: .3s;
     color: inherit;
     border: 1px solid rgb(230, 230, 230);
-    border-radius: 3px
+    border-radius: 6px
 }
 
-.blogFriends a:hover {
-    border-color: rgb(62, 184, 68);
+.codepro-blogFriends a:hover {
+    border-color: var(--link-bg);
 }
 
 .codepro-quydinhFriends {
@@ -54,11 +63,11 @@
     display: block;
     float: left;
     background-color: #f8f9fa;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: -1px;
     margin: 0 8px 8px 0;
     padding: 7px 15px;
-    border-radius: 3px
+    border-radius: 6px
 }
 
 .darkMode .codepro-quydinhFriends {
@@ -68,11 +77,11 @@
     display: block;
     float: left;
     background-color: #353535;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: -1px;
     padding: 7px 15px;
     margin: 0 8px 8px 0;
-    border-radius: 3px
+    border-radius: 6px
 }
 
 .darkMode .codepro-quydinhFriends a {
