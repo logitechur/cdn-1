@@ -1,17 +1,17 @@
-#codepro-blogFriends::-webkit-scrollbar {
+#blogFriends::-webkit-scrollbar {
     width: 5px
 }
 
-#codepro-blogFriends::-webkit-scrollbar-thumb {
+#blogFriends::-webkit-scrollbar-thumb {
     background: #484848;
     border-radius: 100px
 }
 
-#codepro-blogFriends::-webkit-scrollbar-thumb:active {
+#blogFriends::-webkit-scrollbar-thumb:active {
     background: #777
 }
 
-#codepro-blogFriends {
+#blogFriends {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -20,12 +20,12 @@
     display: block
 }
 
-.codepro-blogFriends {
+.blogFriends {
     margin: 0;
     padding: 0
 }
 
-.codepro-blogFriends li {
+.blogFriends li {
     margin: 0;
     padding: 0;
     line-height: normal;
@@ -35,7 +35,7 @@
     width: 50%
 }
 
-.codepro-blogFriends a {
+.blogFriends a {
     margin: 0 8px 8px 0;
     font: 400 13px 'Noto Sans', sans-serif;
     color: inherit;
@@ -43,7 +43,7 @@
     border-radius: 3px
 }
 
-.codepro-blogFriends a:hover {
+.blogFriends a:hover {
     border-color: rgb(62, 184, 68);
 }
 
