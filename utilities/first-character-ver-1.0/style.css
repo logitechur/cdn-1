@@ -1,0 +1,13 @@
+.codepro-first-character {
+    float: left;
+    font-size: 86px;
+    line-height: 60px;
+    padding-right: 13px;
+    padding-bottom: 18px;
+    padding-top: 8px;
+    font-weight: bold;
+    background: url(./flower.webp) repeat center center, linear-gradient(to right bottom, yellow, #ff7062, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100%
+}
