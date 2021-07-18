@@ -1,5 +1,5 @@
 var copyright_by_duypham_dot_info='Recent Comments free version 3.2 by http://duypham.info';
-nc=20;
+nc=40;
 length_name=15;
 length_content=100;
 no_avatar='https://1.bp.blogspot.com/-WRL121_tTDo/YKz7Nd9jQoI/AAAAAAAAFi4/0lrjmwDR1LEhB6QeLxJRXiuCTorR01jbQCLcBGAsYHQ/s0/favicon-180x180.png';
