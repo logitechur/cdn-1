@@ -1,2 +1,27 @@
-html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;}
-a:hover{cursor:url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;}
+html,body {
+	cursor:url("../image/mouse-f1.png"),auto;
+}
+a:hover {
+	cursor:url("../image/mouse-f2.png"),auto;
+}
+body {
+	/* xanh lá */
+	/*background: rgb(129,251,186);
+	background: linear-gradient(134deg, rgba(129,251,186,1) 0%, rgba(39,205,113,1) 100%);*/
+	/* xanh dương */
+	background: rgb(175,219,242);
+	background: linear-gradient(167deg, rgba(175,219,242,1) 0%, rgba(74,182,255,1) 100%);
+}
+
+canvas {
+	padding: 0;
+	margin: auto;
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: 20px;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+}
