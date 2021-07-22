@@ -1,3 +1,12 @@
+/* Created by Le Anh Duc - https://code.pro.vn/
+██╗░░░░░███████╗  ░█████╗░███╗░░██╗██╗░░██╗  ██████╗░██╗░░░██╗░█████╗░
+██║░░░░░██╔════╝  ██╔══██╗████╗░██║██║░░██║  ██╔══██╗██║░░░██║██╔══██╗
+██║░░░░░█████╗░░  ███████║██╔██╗██║███████║  ██║░░██║██║░░░██║██║░░╚═╝
+██║░░░░░██╔══╝░░  ██╔══██║██║╚████║██╔══██║  ██║░░██║██║░░░██║██║░░██╗
+███████╗███████╗  ██║░░██║██║░╚███║██║░░██║  ██████╔╝╚██████╔╝╚█████╔╝
+╚══════╝╚══════╝  ╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝  ╚═════╝░░╚═════╝░░╚════╝░
+Copyright © 2021 Le Anh Duc. All rights reserved. */
+
 html,body {
 	cursor:url("../image/mouse-f1.png"),auto;
 }
@@ -5,10 +14,10 @@ a:hover {
 	cursor:url("../image/mouse-f2.png"),auto;
 }
 body {
-	/* xanh lá */
+	/* green */
 	/*background: rgb(129,251,186);
 	background: linear-gradient(134deg, rgba(129,251,186,1) 0%, rgba(39,205,113,1) 100%);*/
-	/* xanh dương */
+	/* blue */
 	background: rgb(175,219,242);
 	background: linear-gradient(167deg, rgba(175,219,242,1) 0%, rgba(74,182,255,1) 100%);
 }
@@ -24,4 +33,12 @@ canvas {
 	right: 0;
 	border-radius: 20px;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.hi {
+	position:fixed;
+	bottom:-6px;
+	height: 100px;
+	right:0;
+	z-index:9999;
 }
