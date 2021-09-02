@@ -80,42 +80,42 @@ self.addEventListener('message', function(e) {
         }
     } else if (packer === 'aaencode') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/aadecode.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/aadecode.js');
             source = AADecode.decode(source);
         } catch (err) {
             console.log(err);
         }
     } else if (packer === 'jjencode') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/jjdecode.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/jjdecode.js');
             source = JJdecode.decode(source);
         } catch (err) {
             console.log(err);
         }
     } else if (packer === 'urlencode') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/urlencode_unpacker.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/urlencode_unpacker.js');
             if (Urlencoded.detect(source)) source = Urlencoded.unpack(source);
         } catch (err) {
             console.log(err);
         }
     } else if (packer === 'p_a_c_k_e_r') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/p_a_c_k_e_r_unpacker.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/p_a_c_k_e_r_unpacker.js');
             if (P_A_C_K_E_R.detect(source)) source = P_A_C_K_E_R.unpack(source);
         } catch (err) {
             console.log(err);
         }
     } else if (packer === 'javascriptobfuscator') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/javascriptobfuscator_unpacker.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/javascriptobfuscator_unpacker.js');
             if (JavascriptObfuscator.detect(source)) source = JavascriptObfuscator.unpack(source);
         } catch (err) {
             console.log(err);
         }
     } else if (packer === 'myobfuscate') {
         try {
-            self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/decode/myobfuscate_unpacker.js');
+            self.importScripts('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/myobfuscate_unpacker.js');
             if (MyObfuscate.detect(source)) source = MyObfuscate.unpack(source);
         } catch (err) {
             console.log(err);
