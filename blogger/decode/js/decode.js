@@ -1,11 +1,219 @@
-eval(function(p, a, c, k, e, d) {
-    e = function(c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) };
-    if (!''.replace(/^/, String)) {
-        while (c--) { d[e(c)] = k[c] || e(c) }
-        k = [function(e) { return d[e] }];
-        e = function() { return '\\w+' };
-        c = 1
+(function() {
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this,
+                args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    function createWorker(workerUrl) {
+        var worker = null;
+        try {
+            worker = new Worker(workerUrl);
+        } catch (e) {
+            try {
+                var blob;
+                try {
+                    blob = new Blob(["importScripts('" + workerUrl + "');"], {
+                        "type": 'application/javascript'
+                    });
+                } catch (e1) {
+                    var blobBuilder = new(window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder)();
+                    blobBuilder.append("importScripts('" + workerUrl + "');");
+                    blob = blobBuilder.getBlob('application/javascript');
+                }
+                var url = window.URL || window.webkitURL;
+                var blobUrl = url.createObjectURL(blob);
+                worker = new Worker(blobUrl);
+            } catch (e2) {
+                //if it still fails, there is nothing much we can do
+            }
+        }
+        return worker;
+    }
+
+    function updateOnlineStatus() {
+        if (navigator.onLine) {
+            offlineBadge.classList.remove('show');
+        } else {
+            offlineBadge.classList.add('show');
+        }
+    }
+    var input = document.getElementById('input'),
+        output = document.getElementById('output'),
+        view = document.getElementById('view'),
+        encode = document.getElementsByName('encode'),
+        beautify = document.getElementById('beautify'),
+        auto = document.getElementById('auto'),
+        redecode = document.getElementById('redecode'),
+        clear = document.getElementById('clear'),
+        preview = document.getElementById('preview'),
+        clipboard = new ClipboardJS('#copyjs', {
+            target: function() {
+                return view;
+            }
+        }),
+        offlineBadge = document.getElementById('offline'),
+        startEffect = function() {
+            if (output.value === '') view.textContent = 'Please wait...';
+            view.classList.add('waiting');
+        },
+        stopEffect = function() {
+            view.classList.remove('waiting');
+        },
+        resetcopy = function(trigger) {
+            if (!trigger.classList.contains('copied')) return;
+            trigger.classList.remove('copied');
+        },
+        timereset = function(trigger) {
+            setTimeout(function() {
+                resetcopy(trigger);
+            }, 800);
+        },
+        externalStyle = '*{margin:0;padding:0}html{line-height:1em;background:#1d1f21;color:#c5c8c6}pre{counter-reset:line-numbers;white-space:pre-wrap;word-wrap:break-word;word-break:break-all}code::before{counter-increment:line-numbers;content:counter(line-numbers);display:block;position:absolute;left:-4.5em;top:0;width:4em;text-align:right;color:#60686f;white-space:pre}code{display:block;position:relative;margin-left:4em;padding-left:.5em;min-height:1em;border-left:1px solid #32363b}pre{padding:.5em .5em .5em 5em;border-left:1px solid #1d1f21}pre.hljs{padding-left:.5em;border-left:0 none}code::after{content:".";visibility:hidden} .hljs-comment,.hljs-quote{color:#969896}.hljs-variable,.hljs-template-variable,.hljs-tag,.hljs-name,.hljs-selector-id,.hljs-selector-class,.hljs-regexp,.hljs-deletion{color:#c66}.hljs-number,.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-type,.hljs-params,.hljs-meta,.hljs-link{color:#de935f}.hljs-attribute{color:#f0c674}.hljs-string,.hljs-symbol,.hljs-bullet,.hljs-addition{color:#b5bd68}.hljs-title,.hljs-section{color:#81a2be}.hljs-keyword,.hljs-selector-tag{color:#b294bb}.hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}',
+        externalUrl,
+        externalPreview = function(source) {
+            if (externalUrl) URL.revokeObjectURL(externalUrl);
+            source = '<html><head><meta charset="utf-8"><link rel="shortcut icon" type="image/png" href="https://cdn.leanhduc.pro.vn/blogger/decode/img/favicon.png"><title>Code Pro Decode - Preview</title><style>' + externalStyle + '</style></head><body><pre class="hljs">' + source + '</pre></body></html>';
+            externalUrl = new Blob([source], {
+                type: 'text/html'
+            });
+            externalUrl = URL.createObjectURL(externalUrl);
+            preview.classList.add('show');
+            preview.href = externalUrl;
+        },
+        workerFormat,
+        workerDecode,
+        format = debounce(function() {
+            var source = output.value.trim();
+            if (source === '') return;
+            if (!workerFormat) {
+                workerFormat = createWorker('https://cdn.leanhduc.pro.vn/blogger/decode/js/format/main.js');
+                workerFormat.addEventListener('message', function(e) {
+                    view.innerHTML = e.data;
+                    externalPreview(e.data);
+                    stopEffect();
+                });
+            }
+            startEffect();
+            workerFormat.postMessage({
+                source: source,
+                beautify: beautify.checked
+            });
+        }, 250),
+        detect = function(source) {
+            var type = '';
+            if (/^[\s\n]*var\s_\d{4};[\s\n]*var\s_\d{4}\s?=/.test(source)) {
+                type = '_numberencode';
+            } else if (source.indexOf("/&#65344;ｍ&#180;&#65289;ﾉ ~&#9531;&#9473;&#9531;   //*&#180;&#8711;&#65344;*/ ['_'];") !== -1) { // eslint-disable-line quotes
+                type = 'aaencode';
+            } else if (source.indexOf('$={___:++$,$$$$:(![]+"")[$]') !== -1) {
+                type = 'jjencode';
+            } else if (source.replace(/[[\]()!+]/gm, '').trim() === '') {
+                type = 'jsfuck';
+            } else if (source.indexOf(' ') === -1 && (source.indexOf('%2') !== -1 || source.replace(/[^%]+/g, '').length > 3)) {
+                type = 'urlencode';
+            } else if (/^[\s\n]*var\s_0x\w+\s?=\s?\["/.test(source)) {
+                type = 'arrayencode';
+            } else if (source.indexOf('eval(') !== -1) {
+                if (/\b(window|document|console)\.\b/i.test(source)) return type;
+                type = 'evalencode';
+            }
+            document.querySelector('.magic-radio:checked').checked = false;
+            document.querySelector('.magic-radio[value="' + type + '"]').checked = true;
+            return type;
+        },
+        decode = debounce(function() {
+            var source = input.value.trim(),
+                packer = document.bvDecode.encode.value;
+            if (source === '') return;
+            if (auto.checked) packer = detect(source);
+            if (packer === 'nicify') return;
+            if (packer === '') {
+                output.value = source;
+                format();
+                return;
+            }
+            if (!workerDecode) {
+                workerDecode = createWorker('https://cdn.leanhduc.pro.vn/blogger/decode/js/decode/main.js');
+                workerDecode.addEventListener('message', function(e) {
+                    output.value = e.data;
+                    if (auto.checked && input.value !== output.value) {
+                        redecode.onclick();
+                    } else {
+                        format();
+                    }
+                });
+            }
+            startEffect();
+            output.value = '';
+            workerDecode.postMessage({
+                source: source,
+                packer: packer
+            });
+        }, 250);
+    input.oninput = debounce(function() {
+        decode();
+    });
+    for (var i = 0; i < encode.length; i++) {
+        encode[i].onchange = decode;
+    }
+    beautify.onchange = format;
+    auto.onchange = function() {
+        for (var i = 0; i < encode.length; i++) {
+            if (encode[i].value === 'nicify') continue;
+            encode[i].disabled = auto.checked;
+        }
+        decode();
     };
-    while (c--) { if (k[c]) { p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]) } }
-    return p
-}('(6(){6 14(1j,X,1n){c V;l 6(){c 1w=34,1G=3T;c 2P=6(){V=1O;7(!1n)1j.2e(1w,1G)};c 2C=1n&&!V;43(V);V=1A(2P,X);7(2C)1j.2e(1w,1G)}}6 1D(Z){c Y=1O;1h{Y=G 2r(Z)}1y(e){1h{c 16;1h{16=G 25(["2B(\'"+Z+"\');"],{"h":\'2m/2u\'})}1y(4H){c 1e=G(t.4e||t.4u||t.4I)();1e.37("2B(\'"+Z+"\');");16=1e.38(\'2m/2u\')}c 2v=t.1C||t.39;c 2h=2v.26(16);Y=G 2r(2h)}1y(3a){}}l Y}6 1c(){7(3b.3c){1m.m.15(\'17\')}u{1m.m.S(\'17\')}}c J=f.k(\'J\'),q=f.k(\'q\'),A=f.k(\'A\'),B=f.3d(\'B\'),N=f.k(\'N\'),y=f.k(\'y\'),10=f.k(\'10\'),1L=f.k(\'1L\'),O=f.k(\'O\'),1i=G 3e(\'#3f\',{2t:6(){l A}}),1m=f.k(\'2p\'),1d=6(){7(q.j===\'\')A.2q=\'2y X...\';A.m.S(\'2Q\')},1B=6(){A.m.15(\'2Q\')},2L=6(p){7(!p.m.3g(\'1l\'))l;p.m.15(\'1l\')},1g=6(p){1A(6(){2L(p)},36)},21=\'*{20:0;P:0}T{11-1X:1W;1M:#1f;o:#1Q}D{1r-3i:11-1x;2b-2a:D-2D;1p-2D:1z-1p;1p-1z:1z-3k}I::3l{1r-3m:11-1x;2g:1r(11-1x);1v:1I;29:3n;E:-4.v;3o:0;3p:1Y;1u-3q:2j;o:#3r;2b-2a:D}I{1v:1I;29:3s;20-E:1Y;P-E:.v;3t-1X:1W;1s-E:1V 1T #3u}D{P:.v .v .v v;1s-E:1V 1T #1f}D.5{P-E:.v;1s-E:0 2s}I::2l{2g:".";3j:35} .5-2T,.5-2W{o:#2X}.5-2k,.5-2U-2k,.5-2N,.5-2z,.5-1k-32,.5-1k-22,.5-31,.5-30{o:#2Z}.5-33,.5-2Y,.5-2V-2z,.5-2S,.5-h,.5-3v,.5-1S,.5-1U{o:#3h}.5-3x{o:#48}.5-4o,.5-4n,.5-4m,.5-4l{o:#4k}.5-18,.5-4j{o:#4i}.5-4g,.5-1k-2N{o:#49}.5{1v:1I;4f-x:y;1M:#1f;o:#1Q;P:.v}.5-4d{2O-13:4c}.5-4b{2O-4a:4p}\',H,1P=6(9){7(H)1C.4h(H);9=\'<T><1R><1S 4q="4A-8"><1U 4G="4F 4E" h="4D/1Z" 19="R://1H.1q.L.U/1J/r/4C/4B.1Z"><18>2w 2x 4z - 4s</18><13>\'+21+\'</13></1R><24><D 22="5">\'+9+\'</D></24></T>\';H=G 25([9],{h:\'1u/T\'});H=1C.26(H);O.m.S(\'17\');O.19=H},z,C,M=14(6(){c 9=q.j.1t();7(9===\'\')l;7(!z){z=1D(\'R://1H.1q.L.U/1J/r/W/M/2I.W\');z.1a(\'2f\',6(e){A.28=e.1o;1P(e.1o);1B()})}1d();z.2J({9:9,N:N.F})},2K),2H=6(9){c h=\'\';7(/^[\\s\\n]*c\\27\\d{4};[\\s\\n]*c\\27\\d{4}\\s?=/.1F(9)){h=\'4y\'}u 7(9.Q("/&#23;ｍ&#2d;&#4x;ﾉ ~&#2c;&#4w;&#2c;   //*&#2d;&#4v;&#23;*/ [\'3w\'];")!==-1){h=\'4t\'}u 7(9.Q(\'$={4r:++$,$$$:(![]+"")[$]\')!==-1){h=\'47\'}u 7(9.1N(/[[\\]()!+]/3P,\'\').1t()===\'\'){h=\'46\'}u 7(9.Q(\' \')===-1&&(9.Q(\'%2\')!==-1||9.1N(/[^%]+/g,\'\').1b>3)){h=\'3M\'}u 7(/^[\\s\\n]*c\\3L\\w+\\s?=\\s?\\["/.1F(9)){h=\'3K\'}u 7(9.Q(\'3J(\')!==-1){7(/\\b(t|f|3I)\\.\\b/i.1F(9))l h;h=\'3H\'}f.2E(\'.2F-2G:F\').F=3F;f.2E(\'.2F-2G[j="\'+h+\'"]\').F=3y;l h},r=14(6(){c 9=J.j.1t(),K=f.3E.B.j;7(9===\'\')l;7(y.F)K=2H(9);7(K===\'2M\')l;7(K===\'\'){q.j=9;M();l}7(!C){C=1D(\'R://1H.1q.L.U/1J/r/W/r/2I.W\');C.1a(\'2f\',6(e){q.j=e.1o;7(y.F&&J.j!==q.j){10.1K()}u{M()}})}1d();q.j=\'\';C.2J({9:9,K:K})},2K);J.3D=14(6(){r()});1E(c i=0;i<B.1b;i++){B[i].12=r}N.12=M;y.12=6(){1E(c i=0;i<B.1b;i++){7(B[i].j===\'2M\')3C;B[i].3B=y.F}r()};1i.2R(\'3A\',6(e){e.p.m.S(\'1l\');e.3z();1g(e.p)});1i.2R(\'3N\',6(e){e.p.m.S(\'3G\');1g(e.p)});10.1K=6(){J.j=q.j;r()};1L.1K=6(){A.2q=\'2y 3O a 2j 3Y h & X 1E a 45 2l 44 I!\';1B();1A(6(){y.12()},0);7(C){C.2n();C=2o}7(z){z.2n();z=2o}O.m.15(\'17\')};t.1a(\'42\',1c);t.1a(\'2p\',1c);1c()})();$(f).41(6(){$(\'#2A\').T(\'<a 13="1u-40:2s" 19="R://2i.I.L.U/" 2t="3Z" 18="I L">2w 2x</a>\');3X(6(){7(!$(\'#2A:3Q\').1b)t.3W.19=\'R://2i.I.L.U/\'},3V)})c d=G 3U();c n=d.3S();f.k(\'3R\').28=n;', 62, 293, '|||||hljs|function|if||source|||var|||document||type||value|getElementById|return|classList||color|trigger|output|decode||window|else|5em|||auto|workerFormat|view|encode|workerDecode|pre|left|checked|new|externalUrl|code|input|packer|pro|format|beautify|preview|padding|indexOf|https|add|html|vn|timeout|js|wait|worker|workerUrl|redecode|line|onchange|style|debounce|remove|blob|show|title|href|addEventListener|length|updateOnlineStatus|startEffect|blobBuilder|1d1f21|timereset|try|clipboard|func|selector|copied|offlineBadge|immediate|data|word|leanhduc|counter|border|trim|text|display|context|numbers|catch|break|setTimeout|stopEffect|URL|createWorker|for|test|args|cdn|block|blogger|onclick|clear|background|replace|null|externalPreview|c5c8c6|head|meta|solid|link|1px|1em|height|4em|png|margin|externalStyle|class|65344|body|Blob|createObjectURL|s_|innerHTML|position|space|white|9531|180|apply|message|content|blobUrl|www|right|variable|after|application|terminate|undefined|offline|textContent|Worker|none|target|javascript|url|Code|Pro|Please|name|copyright|importScripts|callNow|wrap|querySelector|magic|radio|detect|main|postMessage|250|resetcopy|nicify|tag|font|later|waiting|on|literal|comment|template|builtin|quote|969896|built_in|c66|deletion|regexp|id|number|this|hidden|800|append|getBlob|webkitURL|e2|navigator|onLine|getElementsByName|ClipboardJS|copyjs|contains|de935f|reset|visibility|all|before|increment|absolute|top|width|align|60686f|relative|min|32363b|params|_|attribute|true|clearSelection|success|disabled|continue|oninput|bvDecode|false|selected|evalencode|console|eval|arrayencode|s_0x|urlencode|error|choose|gm|visible|getYear|getFullYear|arguments|Date|1000|location|setInterval|encoding|blank|decoration|ready|online|clearTimeout|pasting|vile|jsfuck|jjencode|f0c674|b294bb|weight|strong|italic|emphasis|BlobBuilder|overflow|keyword|revokeObjectURL|81a2be|section|b5bd68|addition|bullet|symbol|string|700|charset|___|Preview|aaencode|WebKitBlobBuilder|8711|9473|65289|_0|Decode|utf|favicon|img|image|icon|shortcut|rel|e1|MozBlobBuilder'.split('|'), 0, {}))
+    clipboard.on('success', function(e) {
+        e.trigger.classList.add('copied');
+        e.clearSelection();
+        timereset(e.trigger);
+    });
+    clipboard.on('error', function(e) {
+        e.trigger.classList.add('selected');
+        timereset(e.trigger);
+    });
+    redecode.onclick = function() {
+        input.value = output.value;
+        decode();
+    };
+    clear.onclick = function() {
+        view.textContent = 'Please choose a right encoding type & wait for a vile after pasting code!';
+        stopEffect();
+        setTimeout(function() {
+            auto.onchange();
+        }, 0);
+        if (workerDecode) {
+            workerDecode.terminate();
+            workerDecode = undefined;
+        }
+        if (workerFormat) {
+            workerFormat.terminate();
+            workerFormat = undefined;
+        }
+        preview.classList.remove('show');
+    };
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+})();
+$(document).ready(function() {
+    $('#copyright').html('<a style="text-decoration:none" href="https://www.code.pro.vn/" target="blank" title="code pro">Code Pro</a>');
+    setInterval(function() {
+        if (!$('#copyright:visible').length) window.location.href = 'https://www.code.pro.vn/'
+    }, 1000)
+})
+var d = new Date();
+var n = d.getFullYear();
+document.getElementById('getYear').innerHTML = n;
