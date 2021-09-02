@@ -3,14 +3,14 @@ self.addEventListener('message', function(e) {
     if (e.data.beautify) {
         self._window = self.window;
         self.window = {};
-        self.importScripts('./beautify.min.js');
+        self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/format/beautify.min.js');
         source = self.window.js_beautify(source, {
             unescape_strings: true,
             jslint_happy: true
         });
         self.window = self._window;
     }
-    self.importScripts('./highlight.min.js');
+    self.importScripts('https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/blogger/decode/js/format/highlight.min.js');
     source = self.hljs.highlight('javascript', source).value;
     source = source.split('\n');
     source = source.join('</code><code>');
