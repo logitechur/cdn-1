@@ -206,6 +206,7 @@ function tinhthue($thuethunhap)
 }
 // Kết nối datebase
 $link = mysqli_connect("localhost", "username", "password", "thongtin");
+mysqli_set_charset($link, 'UTF8');
 // Kiểm tra kết nối
 if ($link === false) {
     die("ERROR: Không thể kết nối. " . mysqli_connect_error());
