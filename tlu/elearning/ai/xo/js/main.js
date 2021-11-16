@@ -44,7 +44,7 @@ function Click(id) {
         win = winGame();
         winner = 1; // máy đánh
     }
-    
+
     if (win) { // nếu thắng thì hiển thị kết quả ra màn hình
         var mess = 'Máy thắng!';
         if (winner == 0) mess = 'Bạn thắng!';

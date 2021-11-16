@@ -44,7 +44,7 @@ function bot() { // AI
 function getBoard() {
     var TBoard = []; // vị trí đánh
     var sqr = document.getElementsByClassName("square");
-    for (i = 0; i < size * size; i++) {// duyệt bảng
+    for (i = 0; i < size * size; i++) { // duyệt bảng
         TBoard.push(parseInt(sqr.item(i).getAttribute("player"))); // lấy giá trị đánh đẩy vào bảng
     }
     return TBoard;
