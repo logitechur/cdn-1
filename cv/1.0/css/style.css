@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:500,500i,600,600i,700,700i,800,800i,900,900i');
+body {
+    font-family: 'Inconsolata';
+    width: 100%;
+    height: 100%
+}
+
+html,
+body {
+    cursor: url("../image/cursor-f1.png"), auto;
+}
+
+a:hover {
+    cursor: url("../image/cursor-f2.png"), auto;
+}
+
+.wrap {
+    margin: 0;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 20px
+}
+
+.left-panel {
+    padding: 0;
+    height: 100%;
+    min-height: 500px;
+    text-align: right
+}
+
+.left-panel h1 {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #248aaa
+}
+
+.left-panel .author-description {
+    display: block;
+    font-weight: 300
+}
+
+.left-panel .links {
+    margin-top: 15px;
+    margin-bottom: 15px
+}
+
+.left-panel .links .link {
+    margin-top: 6px;
+    display: block;
+    font-size: 15px
+}
+
+.left-panel .links .link i {
+    font-size: 1rem;
+    margin-left: 1rem;
+    opacity: 0.8
+}
+
+.left-panel .avatar {
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.left-panel .avatar:hover {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    cursor: wait;
+}
+
+.left-panel .avatar.show {
+    visibility: visible;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    cursor: wait;
+}
+
+.left-panel .avatar.show:hover {
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+    cursor: wait;
+}
+
+.right-panel h1 {
+    text-transform: capitalize;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #248aaa
+}
+
+.right-panel h1:after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #248aaa;
+    width: 3rem
+}
+
+.right-panel h2 {
+    display: block;
+    font-size: 18px;
+    font-weight: 700
+}
+
+.right-panel h3 {
+    display: block;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.right-panel .list {
+    margin-top: 16px
+}
+
+.right-panel .list .edu {
+    padding-top: 13px
+}
+
+.right-panel .list .project {
+    padding-top: 13px
+}
+
+.right-panel .list .experience {
+    padding-top: 13px
+}
+
+.right-panel .education .edu .edu-date {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 10px
+}
+
+.right-panel .education .edu .edu-description {
+    display: inline-block
+}
+
+.right-panel .projects {
+    padding-top: 13px
+}
+
+.right-panel .projects .project .project-date {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 10px
+}
+
+.right-panel .projects .project .project-description {
+    display: inline-block
+}
+
+.right-panel .experiences {
+    padding-top: 13px
+}
+
+.right-panel .experiences .experience .experience-date {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 10px
+}
+
+.right-panel .experiences .experience .experience-description {
+    display: inline-block
+}
+
+.right-panel .skills {
+    padding-top: 13px
+}
+
+.right-panel .skills .skill .skill-date {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 10px
+}
+
+.right-panel .skills .skill .skill-description {
+    display: inline-block
+}
+
+.right-panel .abilities {
+    list-style-type: none
+}
+
+.right-panel .abilities li:before {
+    font-family: FontAwesome;
+    content: "\f046";
+    padding-right: .5rem;
+    display: inline-block;
+    opacity: 0.8
+}
+
+.right-panel .footer {
+    padding: 1rem;
+    text-align: right;
+    font-weight: 700;
+    font-size: .75rem;
+    margin-top: 2rem
+}
+
+a {
+    color: #55a630;
+    text-decoration: none
+}
+
+a:hover {
+    color: #aedf68;
+}
+
+b {
+    color: #55a630
+}
+
+b:hover {
+    color: #aedf68;
+}
+
+del {
+    opacity: 0.6
+}
+
+@media(max-width:767px) {
+    .wrap {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px
+    }
+}
+
+@media(min-width:767px) {
+    .left-panel .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 30px
+    }
+    .left-panel {
+        margin-right: 2rem
+    }
+}
