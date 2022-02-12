@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Anh Đức</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/leanhducprovn/cdn/font-awesome/pro-5.15.3/css/all.css" rel="stylesheet">
+    <link crossorigin='anonymous' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+        integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' rel='stylesheet' />
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' rel='stylesheet' />
+    
+    
+</head>
+
+<body>
+
+    <!--LOADING-->
+    <div class='loader'>
+        <div class='loader-inner'>
+            <div class='loader-line-wrap'>
+                <div class='loader-line'></div>
+            </div>
+            <div class='loader-line-wrap'>
+                <div class='loader-line'></div>
+            </div>
+            <div class='loader-line-wrap'>
+                <div class='loader-line'></div>
+            </div>
+            <div class='loader-line-wrap'>
+                <div class='loader-line'></div>
+            </div>
+            <div class='loader-line-wrap'>
+                <div class='loader-line'></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- POPUP THONG BAO-->
+    <div aria-hidden='true' aria-labelledby='exampleModalCenterTitle' class='modal fade' id='thongbao' role='dialog'
+        tabindex='-1'>
+        <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLongTitle'>THÔNG BÁO</h5>
+                    <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <div class='modal-body' id='thongbaostr'>
+                    Đã copy !
+                </div>
+                <div class='modal-footer'>
+                    <button class='btn btn-secondary' data-dismiss='modal' type='button'>OK</button>
+                    <!-- <button type="button" class="btn btn-primary">OK</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MAIN -->
+    <div class='center' id='window'>
+        <div id='main'>
+            <div class='center' id='cover'>
+                <div id='bg-cover'></div>
+                <div id='avatar'>
+                    <img alt='avt'
+                        src='https://1.bp.blogspot.com/-hTFdHkCqaDQ/YCHmK6HwwxI/AAAAAAAAHMQ/Tn2XmVpF3ncRlgezYkyt9GsHpc-ouURKQCLcBGAsYHQ/s422/938383067.jpg'
+                        style='height: 200px;                     width: 200px;                     border-radius: 50%;                     object-fit: cover;                     position: relative;                     border: 2px solid #fff;' />
+                </div>
+            </div>
+            <div id='content'>
+                <p id='name'>
+                    VÕ THANH PHÚ
+                    <i class='fa fa-check-circle'></i>
+                </p>
+                <div class='center'>
+                    <span
+                        style='font-weight: bold;color: #ffffff;background-color: #2D88FF;padding: 0.5px 3px;border-radius: 3px;font-size: 10px'>
+                        OFFICIAL ACCOUNT&nbsp;
+                        <i class='fas fa-user'></i>
+                    </span>
+                </div>
+                <p id='bio'>Hi! Chào Cậu :3 </p>
+                <div class='center'>
+                    <div class='border'></div>
+                    <p id='contact-text'>Contact To Me</p>
+                </div>
+                <div class='center boxs' id='boxs' style='margin-top: 3px;'>
+                    <!-- FACEBOOK -->
+                    <div class='box'
+                        style='                         background: rgb(42,100,173);                         background: -moz-linear-gradient(127deg, rgba(42,100,173,1) 0%, rgba(45,136,255,1) 100%);                         background: -webkit-linear-gradient(127deg, rgba(42,100,173,1) 0%, rgba(45,136,255,1) 100%);                         background: linear-gradient(127deg, rgba(42,100,173,1) 0%, rgba(45,136,255,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'><i class='fa fa-facebook-square'></i></div>
+                            </div>
+                            <div class='col-10' onclick='openlink("https://www.facebook.com/VoThanhPhu.Contact/")'>
+                                <p class='detail'>Facebook</p>
+                                <p class='linked'>Võ Thanh Phú</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MESSENGER -->
+                    <div class='box'
+                        style='                         background: rgb(94,114,235);                         background: -moz-linear-gradient(127deg, rgba(94,114,235,1) 0%, rgba(255,145,144,1) 100%);                         background: -webkit-linear-gradient(127deg, rgba(94,114,235,1) 0%, rgba(255,145,144,1) 100%);                         background: linear-gradient(127deg, rgba(94,114,235,1) 0%, rgba(255,145,144,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <i class='fab fa-facebook-messenger'></i>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='openlink("https://www.m.me/VoThanhPhu.Contact/")'>
+                                <p class='detail'>Messenger</p>
+                                <p class='linked'>Võ Thanh Phú</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TikTok -->
+                    <div class='box'
+                        style='                         background: rgb(0,0,0);                         background: linear-gradient(127deg, rgba(0,0,0,1) 0%, rgba(84,64,84,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <i class='fab fa-tiktok'></i>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='openlink("https://www.tiktok.com/@vothanhphu.2204?/")'>
+                                <p class='detail'>TikTok</p>
+                                <p class='linked'>Võ Thanh Phú</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MOMO -->
+                    <div class='box'
+                        style='                         background: rgb(255,52,185);                         background: linear-gradient(127deg, rgba(255,52,185,1) 0%, rgba(255,60,97,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <!-- <i class="fas fa-wallet"></i> -->
+                                    <div class='div-logo'
+                                        style='background-image: url(https://1.bp.blogspot.com/-jERxVmv14BY/YOsND4AUNHI/AAAAAAAAHXQ/tVKaNhz5n4Mf7WOxFu8WFWGkEXoU8gRowCLcBGAsYHQ/s250/momo.png);'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='openlink("https://nhantien.momo.vn/0989521407");'>
+                                <p class='detail'>Momo</p>
+                                <p class='linked'>0989.521.407</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- VCB -->
+                    <div class='box'
+                        style='                         background: rgb(52,148,255);                         background: linear-gradient(127deg, rgba(52,148,255,1) 0%, rgba(60,255,161,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <div class='div-logo'
+                                        style='background-image: url(https://1.bp.blogspot.com/-AhJcuIb7bdM/YOsaXckNIaI/AAAAAAAAYpo/_jwek9spRJc30DhRI6f4hB90LUkAznknwCLcBGAsYHQ/s16000/vcb.png);'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='copytext("1020933110");'>
+                                <p class='detail'>Vietcombank</p>
+                                <p class='linked'>1020933110</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MB -->
+                    <div class='box'
+                        style='                      background: rgb(52,148,255);                      background: linear-gradient(127deg, rgba(52,148,255,1) 0%, rgba(60,255,161,1) 100%);                  '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <div class='div-logo'
+                                        style='background-image: url(https://1.bp.blogspot.com/-U6BYek8E1Iw/YOsaW_V0o0I/AAAAAAAAYpc/YIimwcvK5AIDdpKjOt7-8Kkhz_y1cRFrACLcBGAsYHQ/s583/mb.png);'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='copytext("999666696");'>
+                                <p class='detail'>MBBank</p>
+                                <p class='linked'>999666696</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SO DIEN THOAI -->
+                    <div class='box'
+                        style='                         background: rgb(47,108,18);                         background: linear-gradient(127deg, rgba(47,108,18,1) 0%, rgba(47,191,122,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <i class='fas fa-phone'></i>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='openlink("tel:+84354545557");'>
+                                <p class='detail'>Phone</p>
+                                <p class='linked'>03.5454.5557</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Zalo -->
+                    <div class='box'
+                        style='                         background: rgb(0,104,255);                         background: linear-gradient(127deg, rgba(0,104,255,1) 0%, rgba(117,173,255,1) 100%);                     '>
+                        <div class='row'>
+                            <div class='col-2'>
+                                <div class='icon'>
+                                    <!-- <i class="fas fa-phone"></i> -->
+                                    <div class='div-logo'
+                                        style='background-image: url(https://1.bp.blogspot.com/-RiA9_jd2FCY/YOsNYUTjNxI/AAAAAAAAHXY/2_54A5zNdkswBY1PPyNEML3RqscluuQiQCLcBGAsYHQ/s360/zalo.png);'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-10' onclick='openlink("https://www.zalo.me/0354545557/");'>
+                                <p class='detail'>Zalo</p>
+                                <p class='linked'>Võ Thanh Phú</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p id='bio'>&#169; Copyright Võ Thanh Phú</p>
+            </div>
+        </div>
+        <div class='' id='bg'></div>
+    </div>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
